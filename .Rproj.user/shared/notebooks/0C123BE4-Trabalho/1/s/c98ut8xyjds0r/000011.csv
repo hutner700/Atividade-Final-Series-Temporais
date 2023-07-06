@@ -1,0 +1,8 @@
+"0","residuos <- fortify(as.data.frame(residuals(modelo_cointegracao)))"
+"0","colnames(residuos) <- c('res')"
+"0","rownames(residuos) <- dados_cointegracao$trim[-1]"
+"0",""
+"0","grafico_resi <- ggplot(residuos, aes(x = rownames(residuos), y = res)) +"
+"0","  geom_point(color = cor_linha) +"
+"0","  labs(x = ""Ano"", y = ""Resíduo"", title = ""Resíduos"")"
+"0","grafico_resi"

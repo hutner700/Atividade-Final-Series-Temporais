@@ -1,0 +1,5 @@
+"0",""
+"0","grafico_var_inicial_vv <- ggplot(df_dados_dif_cointegracao, aes(x = index(dados_dif_cointegracao), y = y)) +"
+"0","  geom_line(color = cor_linha) +"
+"0","  labs(x = ""Ano"", y = ""Diff PIB Norte Americano"", title = ""PIB Norte Americano"")"
+"0","grafico_var_inicial_vv"

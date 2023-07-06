@@ -1,0 +1,1 @@
+"0","pacf(dados_sarima$RCAR6T, lag=50, col = cor_linha)"

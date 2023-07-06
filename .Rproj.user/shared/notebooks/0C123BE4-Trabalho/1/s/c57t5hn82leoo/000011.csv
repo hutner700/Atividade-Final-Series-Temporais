@@ -1,0 +1,5 @@
+"0","grafico_var_inicial_vv <- ggplot(dados_var, aes(x = trim, y = txj)) +"
+"0","  geom_line(color = cor_linha) +"
+"0","  labs(x = ""Ano"", y = ""Taxa de Juros"", title = ""Taxa de Juros"")"
+"0",""
+"0","grafico_var_inicial_vv"

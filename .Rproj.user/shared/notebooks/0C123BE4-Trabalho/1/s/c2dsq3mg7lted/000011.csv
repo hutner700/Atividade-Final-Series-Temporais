@@ -1,0 +1,5 @@
+"0","dados_dif_cointegracao <- cbind(diff(dados_cointegracao$c), diff(dados_cointegracao$y))"
+"0","colnames(dados_dif_cointegracao) <- c(""c"",""y"")"
+"0","rownames(dados_dif_cointegracao) <- dados_cointegracao$trim[-1]"
+"0","df_dados_dif_cointegracao <- fortify(dados_dif_cointegracao)"
+"0","df_dados_dif_cointegracao"

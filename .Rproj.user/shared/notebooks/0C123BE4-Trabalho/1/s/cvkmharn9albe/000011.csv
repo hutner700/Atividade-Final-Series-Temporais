@@ -1,0 +1,4 @@
+"0","grafico_sar_inicial <- ggplot(dados_sarima, aes(x = trim, y = RCAR6T)) +"
+"0","  geom_line(color = cor_linha) +"
+"0","  labs(x = ""Ano"", y = ""Automoveis Vendidos"", title = ""Gráfico p/ SARIMA Automoveis"")"
+"0","grafico_sar_inicial"

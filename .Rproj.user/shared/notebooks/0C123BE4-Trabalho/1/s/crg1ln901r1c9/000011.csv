@@ -1,0 +1,4 @@
+"0","grafico_var_inicial_vv <- ggplot(dados_var, aes(x = trim, y = vv)) +"
+"0","  geom_line(color = cor_linha) +"
+"0","  labs(x = ""Ano"", y = ""Automoveis Vendidos"", title = ""Venda de Veiculos"")"
+"0","grafico_var_inicial_vv"
