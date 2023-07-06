@@ -11,6 +11,7 @@ library(forecast)
 library(vars)
 library(lmtest)
 library(stargazer)
+library(urca)
 
 
 dados_cointegracao <- read_excel("dados sobre cointegracao.xlsx", sheet = 1)
@@ -29,18 +30,18 @@ dados_var$trim <- ymd(paste0(dados_var$trim, "01"))
 
 ## Codigo
 
-set.seed(75395)
-cor_linha = "#A52A2A"
-folder = "Diogo"
-fake_sarima_dados = "dados_sarima"
-fake_var_dados = "dados_var"
+set.seed(748415)
+cor_linha = "#455949"
+folder = "Luisa"
+fake_sarima_dados = "dadosSarima"
+fake_var_dados = "dadosVar"
 
 # Plotar o Sarima
 grafico_sar_inicial <- ggplot(dados_sarima, aes(x = trim, y = RCAR6T)) +
   geom_line(color = cor_linha) +
   labs(x = "Ano", y = "Automoveis Vendidos", title = "Gráfico SARIMA")
-
-ggsave(paste0(folder,"/sarima.png"), plot = grafico_sar_inicial, width = 6, height = 4, dpi = 300)
+write.csv2(dados_sarima, file =paste0(folder,"/SAR_dados_basicos.csv"))
+ggsave(paste0(folder,"/SAR.png"), plot = grafico_sar_inicial, width = 6, height = 4, dpi = 300)
 
 grafico_sar_inicial
 
@@ -53,20 +54,21 @@ output <- paste0("\tAugmented Dickey-Fuller Test\n\n",
                 " Lag order = ","5" , ",",
                 " p-value = ", sprintf("%.5f", results_adf_sar$p.value), "\n",
                 "alternative hypothesis: stationary")
-writeLines(output, paste0(folder, "/ADFt_SARIMA.txt"))
+writeLines(output, paste0(folder, "/SAR_ADF.txt"))
 
 # Calcular e plotar o ACF
 acf_result <- acf(dados_sarima$RCAR6T, lag=50)
 plot(acf_result, main = "Autocorrelation Function (ACF)", col = cor_linha)
-file <- paste0(folder,"/acfSarima.jpg")
+file <- paste0(folder,"/SAR_ACF.jpg")
 dev.print(png, file,width = 600, height = 400)
+write.csv2(as.data.frame(acf_result$acf), file =paste0(folder,"/SAR_acf_dados.csv"))
 
 #Plotar pacf
 acf_result <- pacf(dados_sarima$RCAR6T, lag=50)
 plot(acf_result, main = "Parcial Autocorrelation Function (PACF)", col = cor_linha)
-file <- paste0(folder,"/pacfSarima.jpg")
+file <- paste0(folder,"/SAR_PACF.jpg")
 dev.print(png, file,width = 600, height = 400)
-
+write.csv2(as.data.frame(acf_result$acf), file =paste0(folder,"/SAR_pacf_dados.csv"))
 # Sarima
 modelo_sarima <- Arima(dados_sarima$RCAR6T, order = c(1, 0, 0), seasonal = list(order = c(1, 0, 0), period = 12))
 
@@ -77,7 +79,7 @@ objeto_summary <- capture.output(summary(modelo_sarima))
 novo_summary <- c(paste0("Series: ", fake_sarima_dados ,"$RCAR6T"),objeto_summary[-1])
 
 # Imprimir o novo summary
-writeLines(novo_summary, paste0(folder, "/SummarySarima.txt"))
+writeLines(novo_summary, paste0(folder, "/SAR_Summary.txt"))
 
 ## VAR
 
@@ -88,7 +90,7 @@ grafico_var_inicial_vv <- ggplot(dados_var, aes(x = trim, y = vv)) +
 
 grafico_var_inicial_vv
 ggsave(paste0(folder,"/VAR_vv.png"), plot = grafico_var_inicial_vv, width = 6, height = 4, dpi = 300)
-
+write.csv2(as.data.frame(dados_var), file =paste0(folder,"/VAR_vv_txj_dados.csv"))
 # Plotar o VAR TXJ
 grafico_var_inicial_vv <- ggplot(dados_var, aes(x = trim, y = txj)) +
   geom_line(color = cor_linha) +
@@ -108,7 +110,7 @@ output <- paste0("\tAugmented Dickey-Fuller Test\n\n",
                  " Lag order = ","5" , ",",
                  " p-value = ", sprintf("%.5f", results_adf_var_vv$p.value), "\n",
                  "alternative hypothesis: stationary")
-writeLines(output, paste0(folder, "/ADFt_Var_VV.txt"))
+writeLines(output, paste0(folder, "/VAR_vv_adf.txt"))
 
 #Teste adfFuller VV
 results_adf_var_txj <- adf.test(dados_var$txj)
@@ -119,7 +121,7 @@ output <- paste0("\tAugmented Dickey-Fuller Test\n\n",
                  " Lag order = ","5" , ",",
                  " p-value = ", sprintf("%.5f", results_adf_var_txj$p.value), "\n",
                  "alternative hypothesis: stationary")
-writeLines(output, paste0(folder, "/ADFt_Var_TXJ.txt"))
+writeLines(output, paste0(folder, "/VAR_txj_adf.txt"))
 # montando var
 modelo_var <- VAR(dados_var[,c("txj",'vv')], p = 1)
 summary_var <- capture.output(summary(modelo_var))
@@ -128,7 +130,7 @@ summary_var[11] <- paste0("VAR(y = ",dados_var, "[, c(\"txj\", \"vv\")], p = 1)"
 
 result <-  capture.output(grangertest(txj ~ vv, data = dados_var))
 result2 <-  capture.output(grangertest(vv ~ txj, data = dados_var))
-writeLines(c(result,"\n", result2), paste0(folder, "/var_granger.txt"))
+writeLines(c(result,"\n", result2), paste0(folder, "/VAR_granger.txt"))
 irf_txj <- irf(modelo_var,impulse = "txj", response=c("txj","vv"), n.ahead = 10)
 
 dados_irf_txj <- data.frame(
@@ -148,7 +150,7 @@ grafico_irf_txj_txj <- ggplot(dados_irf_txj, aes(x = seq_along(txj))) +
   labs(x = "Lag", y = "Taxa Juros", title = "Impulse Response Function") +
   theme_minimal()
 
-ggsave(paste0(folder,"/FRI_txj_txj.png"), plot = grafico_irf_txj_txj, width = 6, height = 4, dpi = 300)
+ggsave(paste0(folder,"/VAR_FRI_txj_txj.png"), plot = grafico_irf_txj_txj, width = 6, height = 4, dpi = 300)
 
 grafico_irf_txj_vv <- ggplot(dados_irf_txj, aes(x = seq_along(txj))) +
   geom_line(aes(y = vv, color = "Resposta ao Impulso"), size = 1) +
@@ -158,7 +160,7 @@ grafico_irf_txj_vv <- ggplot(dados_irf_txj, aes(x = seq_along(txj))) +
   labs(x = "Lag", y = "Venda de Carros", title = "Impulse Response Function") +
   theme_minimal()
 
-ggsave(paste0(folder,"/FRI_txj_vv.png"), plot = grafico_irf_txj_vv, width = 6, height = 4, dpi = 300)
+ggsave(paste0(folder,"/VAR_FRI_txj_vv.png"), plot = grafico_irf_txj_vv, width = 6, height = 4, dpi = 300)
 
 irf_vv <- irf(modelo_var,impulse = "vv", response=c("txj","vv"), n.ahead = 10)
 
@@ -179,7 +181,7 @@ grafico_irf_vv_txj <- ggplot(dados_irf_vv, aes(x = seq_along(txj))) +
   labs(x = "Lag", y = "Taxa Juros", title = "Impulse Response Function") +
   theme_minimal()
 
-ggsave(paste0(folder,"/FRI_vv_txj.png"), plot = grafico_irf_vv_txj, width = 6, height = 4, dpi = 300)
+ggsave(paste0(folder,"/VAR_FRI_vv_txj.png"), plot = grafico_irf_vv_txj, width = 6, height = 4, dpi = 300)
 
 grafico_irf_vv_txj <- ggplot(dados_irf_vv, aes(x = seq_along(txj))) +
   geom_line(aes(y = vv, color = "Resposta ao Impulso"), size = 1) +
@@ -189,10 +191,10 @@ grafico_irf_vv_txj <- ggplot(dados_irf_vv, aes(x = seq_along(txj))) +
   labs(x = "Lag", y = "Venda de Carros", title = "Impulse Response Function") +
   theme_minimal()
 
-ggsave(paste0(folder,"/FRI_vv_vv.png"), plot = grafico_irf_txj_vv, width = 6, height = 4, dpi = 300)
+ggsave(paste0(folder,"/VAR_FRI_vv_vv.png"), plot = grafico_irf_txj_vv, width = 6, height = 4, dpi = 300)
 
-write.csv2(dados_irf_vv, file =paste0(folder,"/FRI_vv.csv"))
-write.csv2(dados_irf_txj, file =paste0(folder,"/FRI_txj.csv"))
+write.csv2(dados_irf_vv, file =paste0(folder,"/VAR_FRI_impulso_no_vv.csv"))
+write.csv2(dados_irf_txj, file =paste0(folder,"/VAR_FRI_impulso_no_txj.csv"))
 
 ## Questão Cointegração
 dados_dif_cointegracao <- cbind(diff(dados_cointegracao$c), diff(dados_cointegracao$y))
@@ -206,7 +208,7 @@ grafico_var_inicial_vv <- ggplot(df_dados_dif_cointegracao, aes(x = index(dados_
 
 grafico_var_inicial_vv
 ggsave(paste0(folder,"/COI_consumo.png"), plot = grafico_var_inicial_vv, width = 6, height = 4, dpi = 300)
-
+write.csv2(as.data.frame(df_dados_dif_cointegracao), file =paste0(folder,"/COI_diff_c_e_y.csv"))
 
 grafico_var_inicial_vv <- ggplot(df_dados_dif_cointegracao, aes(x = index(dados_dif_cointegracao), y = y)) +
   geom_line(color = cor_linha) +
@@ -214,5 +216,35 @@ grafico_var_inicial_vv <- ggplot(df_dados_dif_cointegracao, aes(x = index(dados_
 
 ggsave(paste0(folder,"/COI_pib.png"), plot = grafico_var_inicial_vv, width = 6, height = 4, dpi = 300)
 
+modelo_cointegracao <- lm(y ~ c, data = as.data.frame(dados_dif_cointegracao))
 
-modelo_cointegracao <- lm(y ~ c, data = dados_cointegracao)
+output <- capture.output(summary(modelo_cointegracao))
+writeLines(output, paste0(folder, "/COI_summary.txt"))
+
+residuos <- fortify(as.data.frame(residuals(modelo_cointegracao)))
+colnames(residuos) <- c('res')
+rownames(residuos) <- dados_cointegracao$trim[-1]
+typeof(residuos)
+
+# Plotar o gráfico dos resíduos
+grafico_resi <- ggplot(residuos, aes(x = rownames(residuos), y = res)) +
+  geom_point(color = cor_linha) +
+  labs(x = "Ano", y = "Resíduo", title = "Resíduos")
+write.csv2(as.data.frame(residuos), file =paste0(folder,"/COI_residuos_pro_vec.csv"))
+
+# Exibir o gráfico
+grafico_resi
+
+ggsave(paste0(folder,"/COI_resid.png"), plot = grafico_resi, width = 6, height = 4, dpi = 300)
+
+teste <- capture.output(adf.test(residuos$res))
+
+# alterar segunda linha, onde ta escrito data:
+
+writeLines(teste, paste0(folder, "/COI_res_ADF.txt"))
+
+# modelo vec
+vec_results <- ca.jo(df_dados_dif_cointegracao, type = "eigen", K=2)
+vec_results_string <- capture.output(summary(vec_results))
+writeLines(vec_results_string, paste0(folder, "/VEC_results.txt"))
+

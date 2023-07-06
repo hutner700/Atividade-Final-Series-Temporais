@@ -1,0 +1,7 @@
+
+	Augmented Dickey-Fuller Test
+
+data:  residuos$res
+Dickey-Fuller = -3.1502, Lag order = 5, p-value = 0.09919
+alternative hypothesis: stationary
+

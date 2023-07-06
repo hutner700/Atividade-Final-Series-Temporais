@@ -1,0 +1,5 @@
+	Augmented Dickey-Fuller Test
+
+data: dadosVar$vv
+Dickey-Fuller = -3.7548, Lag order = 5, p-value = 0.02323
+alternative hypothesis: stationary
