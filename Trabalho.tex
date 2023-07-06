@@ -1,0 +1,1125 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{iftex}
+\ifPDFTeX
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math} % this also loads fontspec
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usepackage{lmodern}
+\ifPDFTeX\else
+  % xetex/luatex font selection
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifLuaTeX
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\urlstyle{same}
+\hypersetup{
+  pdftitle={Trabalho Final Series Temporais},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+
+\title{Trabalho Final Series Temporais}
+\author{}
+\date{\vspace{-2.5em}}
+
+\begin{document}
+\maketitle
+
+Aluno: Diogo Costa Hutner
+
+Primeiro, carregando os modulos e os dados.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(readxl)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'readxl' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(zoo)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'zoo'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     as.Date, as.Date.numeric
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lubridate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Attaching package: 'lubridate'
+\end{verbatim}
+
+\begin{verbatim}
+## The following objects are masked from 'package:base':
+## 
+##     date, intersect, setdiff, union
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggplot2)}
+\FunctionTok{library}\NormalTok{(tseries)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'tseries' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{verbatim}
+## Registered S3 method overwritten by 'quantmod':
+##   method            from
+##   as.zoo.data.frame zoo
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(magick)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'magick' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Linking to ImageMagick 6.9.12.3
+## Enabled features: cairo, freetype, fftw, ghostscript, heic, lcms, pango, raw, rsvg, webp
+## Disabled features: fontconfig, x11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(gridExtra)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'gridExtra' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(ggfortify)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'ggfortify' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(stats)}
+\FunctionTok{library}\NormalTok{(forecast)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'forecast' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Registered S3 methods overwritten by 'forecast':
+##   method                 from     
+##   autoplot.Arima         ggfortify
+##   autoplot.acf           ggfortify
+##   autoplot.ar            ggfortify
+##   autoplot.bats          ggfortify
+##   autoplot.decomposed.ts ggfortify
+##   autoplot.ets           ggfortify
+##   autoplot.forecast      ggfortify
+##   autoplot.stl           ggfortify
+##   autoplot.ts            ggfortify
+##   fitted.ar              ggfortify
+##   fortify.ts             ggfortify
+##   residuals.ar           ggfortify
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(vars)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'vars' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: MASS
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: strucchange
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'strucchange' was built under R version 4.2.2
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: sandwich
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: urca
+\end{verbatim}
+
+\begin{verbatim}
+## Warning: package 'urca' was built under R version 4.2.3
+\end{verbatim}
+
+\begin{verbatim}
+## Carregando pacotes exigidos: lmtest
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(lmtest)}
+\FunctionTok{library}\NormalTok{(stargazer)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Please cite as:
+\end{verbatim}
+
+\begin{verbatim}
+##  Hlavac, Marek (2022). stargazer: Well-Formatted Regression and Summary Statistics Tables.
+\end{verbatim}
+
+\begin{verbatim}
+##  R package version 5.2.3. https://CRAN.R-project.org/package=stargazer
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(urca)}
+
+
+\NormalTok{dados\_cointegracao }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"dados sobre cointegracao.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \DecValTok{1}\NormalTok{)}
+\NormalTok{dados\_cointegracao}\SpecialCharTok{$}\NormalTok{trim }\OtherTok{\textless{}{-}} \FunctionTok{as.yearqtr}\NormalTok{(dados\_cointegracao}\SpecialCharTok{$}\NormalTok{trim, }\AttributeTok{format =} \StringTok{"\%Yq\%q"}\NormalTok{)}
+\NormalTok{dados\_cointegracao}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 136 x 3
+##    trim          c     y
+##    <yearqtr> <dbl> <dbl>
+##  1 1947 Q1    4596  4886
+##  2 1947 Q2    4655  4766
+##  3 1947 Q3    4637  4855
+##  4 1947 Q4    4609  4774
+##  5 1948 Q1    4627  4869
+##  6 1948 Q2    4658  4993
+##  7 1948 Q3    4646  5070
+##  8 1948 Q4    4660  5059
+##  9 1949 Q1    4644  4938
+## 10 1949 Q2    4681  4916
+## # ... with 126 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_sarima }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"Dados para replicar SARIMA  Vendas de Automoveis USA.xlsx"}\NormalTok{, }\AttributeTok{sheet =} \DecValTok{1}\NormalTok{)}
+\FunctionTok{colnames}\NormalTok{(dados\_sarima) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"trim"}\NormalTok{,}\StringTok{"RCAR6T"}\NormalTok{)}
+\NormalTok{dados\_sarima}\SpecialCharTok{$}\NormalTok{trim }\OtherTok{\textless{}{-}} \FunctionTok{as.Date}\NormalTok{(dados\_sarima}\SpecialCharTok{$}\NormalTok{trim)}
+\NormalTok{dados\_sarima}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 194 x 2
+##    trim       RCAR6T
+##    <date>      <dbl>
+##  1 1980-01-01   806.
+##  2 1980-02-01   812.
+##  3 1980-03-01   895.
+##  4 1980-04-01   743.
+##  5 1980-05-01   697.
+##  6 1980-06-01   702.
+##  7 1980-07-01   773.
+##  8 1980-08-01   686.
+##  9 1980-09-01   674.
+## 10 1980-10-01   848.
+## # ... with 184 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_var }\OtherTok{\textless{}{-}} \FunctionTok{read\_excel}\NormalTok{(}\StringTok{"Dados exemplo Modelo VAR sobre vendas veiculos e juros.xlsx"}\NormalTok{, }\AttributeTok{sheet=}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## New names:
+## * `` -> `...1`
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_var}\SpecialCharTok{$}\NormalTok{txj }\OtherTok{\textless{}{-}} \FunctionTok{as.numeric}\NormalTok{(dados\_var}\SpecialCharTok{$}\NormalTok{txj)}
+\FunctionTok{colnames}\NormalTok{(dados\_var) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"trim"}\NormalTok{,}\StringTok{"vv"}\NormalTok{,}\StringTok{"txj"}\NormalTok{)}
+\NormalTok{dados\_var}\SpecialCharTok{$}\NormalTok{trim }\OtherTok{\textless{}{-}} \FunctionTok{ymd}\NormalTok{(}\FunctionTok{paste0}\NormalTok{(dados\_var}\SpecialCharTok{$}\NormalTok{trim, }\StringTok{"01"}\NormalTok{))}
+\NormalTok{cor\_linha }\OtherTok{\textless{}{-}} \StringTok{"\#11CC22"}
+\end{Highlighting}
+\end{Shaded}
+
+\hypertarget{modelo-sarima}{%
+\section{Modelo SARIMA}\label{modelo-sarima}}
+
+De começo, ver os graficos como eles estão, depois plotar ele e fazer
+teste de estacionaridade, apos isso ACF e PACF. Por fim postar um
+summary do modelo
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_sarima}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 194 x 2
+##    trim       RCAR6T
+##    <date>      <dbl>
+##  1 1980-01-01   806.
+##  2 1980-02-01   812.
+##  3 1980-03-01   895.
+##  4 1980-04-01   743.
+##  5 1980-05-01   697.
+##  6 1980-06-01   702.
+##  7 1980-07-01   773.
+##  8 1980-08-01   686.
+##  9 1980-09-01   674.
+## 10 1980-10-01   848.
+## # ... with 184 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grafico\_sar\_inicial }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_sarima, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ trim, }\AttributeTok{y =}\NormalTok{ RCAR6T)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =}\NormalTok{ cor\_linha) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ano"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Automoveis Vendidos"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Gráfico p/ SARIMA Automoveis"}\NormalTok{)}
+\NormalTok{grafico\_sar\_inicial}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-3-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{results\_adf\_sar }\OtherTok{\textless{}{-}} \FunctionTok{adf.test}\NormalTok{(dados\_sarima}\SpecialCharTok{$}\NormalTok{RCAR6T)}
+\NormalTok{results\_adf\_sar}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Augmented Dickey-Fuller Test
+## 
+## data:  dados_sarima$RCAR6T
+## Dickey-Fuller = -3.5165, Lag order = 5, p-value = 0.04263
+## alternative hypothesis: stationary
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{acf\_result }\OtherTok{\textless{}{-}} \FunctionTok{acf}\NormalTok{(dados\_sarima}\SpecialCharTok{$}\NormalTok{RCAR6T, }\AttributeTok{lag=}\DecValTok{50}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-5-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(acf\_result, }\AttributeTok{main =} \StringTok{"Autocorrelation Function (ACF)"}\NormalTok{, }\AttributeTok{col =}\NormalTok{ cor\_linha)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-5-2.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{as.data.frame}\NormalTok{(acf\_result}\SpecialCharTok{$}\NormalTok{acf)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##              V1
+## 1   1.000000000
+## 2   0.692407662
+## 3   0.545943491
+## 4   0.474553676
+## 5   0.344853406
+## 6   0.296686722
+## 7   0.259254061
+## 8   0.267136345
+## 9   0.295922854
+## 10  0.388487315
+## 11  0.449843634
+## 12  0.562022005
+## 13  0.683810971
+## 14  0.532090652
+## 15  0.456969055
+## 16  0.369957821
+## 17  0.201843145
+## 18  0.145811867
+## 19  0.129349932
+## 20  0.116806471
+## 21  0.121860361
+## 22  0.175400580
+## 23  0.248984854
+## 24  0.359575358
+## 25  0.418024046
+## 26  0.326650585
+## 27  0.266767454
+## 28  0.145587966
+## 29  0.011514301
+## 30 -0.032106115
+## 31 -0.068127223
+## 32 -0.071162973
+## 33 -0.043899213
+## 34  0.026445718
+## 35  0.099066765
+## 36  0.176426863
+## 37  0.197113558
+## 38  0.127505095
+## 39  0.079658415
+## 40 -0.015878380
+## 41 -0.138207285
+## 42 -0.216960267
+## 43 -0.238303602
+## 44 -0.229583544
+## 45 -0.216144092
+## 46 -0.145285920
+## 47 -0.054220323
+## 48  0.004082515
+## 49  0.109588436
+## 50  0.039685693
+## 51 -0.054746174
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{acf\_result }\OtherTok{\textless{}{-}} \FunctionTok{pacf}\NormalTok{(dados\_sarima}\SpecialCharTok{$}\NormalTok{RCAR6T, }\AttributeTok{lag=}\DecValTok{50}\NormalTok{, }\AttributeTok{col =}\NormalTok{ cor\_linha)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-7-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{pacf}\NormalTok{(dados\_sarima}\SpecialCharTok{$}\NormalTok{RCAR6T, }\AttributeTok{lag=}\DecValTok{50}\NormalTok{, }\AttributeTok{col =}\NormalTok{ cor\_linha)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-8-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo\_sarima }\OtherTok{\textless{}{-}} \FunctionTok{Arima}\NormalTok{(dados\_sarima}\SpecialCharTok{$}\NormalTok{RCAR6T, }\AttributeTok{order =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\AttributeTok{seasonal =} \FunctionTok{list}\NormalTok{(}\AttributeTok{order =} \FunctionTok{c}\NormalTok{(}\DecValTok{1}\NormalTok{, }\DecValTok{0}\NormalTok{, }\DecValTok{0}\NormalTok{), }\AttributeTok{period =} \DecValTok{12}\NormalTok{))}
+
+\FunctionTok{summary}\NormalTok{(modelo\_sarima)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Series: dados_sarima$RCAR6T 
+## ARIMA(1,0,0)(1,0,0)[12] with non-zero mean 
+## 
+## Coefficients:
+##          ar1    sar1      mean
+##       0.5438  0.5538  773.7203
+## s.e.  0.0638  0.0626   24.2330
+## 
+## sigma^2 = 5580:  log likelihood = -1112.95
+## AIC=2233.9   AICc=2234.11   BIC=2246.97
+## 
+## Training set error measures:
+##                     ME     RMSE      MAE        MPE     MAPE      MASE
+## Training set 0.1506749 74.12011 57.38731 -0.9516228 7.434101 0.7504201
+##                     ACF1
+## Training set -0.06595613
+\end{verbatim}
+
+\hypertarget{modelo-var}{%
+\section{modelo VAR}\label{modelo-var}}
+
+Primeiro, ver os dados, segundo os graficos, depois teste de
+estacionaridade
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_var}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 144 x 3
+##    trim           vv   txj
+##    <date>      <dbl> <dbl>
+##  1 1999-01-01  60069  2.18
+##  2 1999-02-01  29474  2.38
+##  3 1999-03-01 103085  3.33
+##  4 1999-04-01  84816  2.35
+##  5 1999-05-01  80241  2.02
+##  6 1999-06-01  76260  1.67
+##  7 1999-07-01  82960  1.66
+##  8 1999-08-01  91896  1.57
+##  9 1999-09-01  94546  1.49
+## 10 1999-10-01  68898  1.38
+## # ... with 134 more rows
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grafico\_var\_inicial\_vv }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_var, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ trim, }\AttributeTok{y =}\NormalTok{ vv)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =}\NormalTok{ cor\_linha) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ano"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Automoveis Vendidos"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Venda de Veiculos"}\NormalTok{)}
+\NormalTok{grafico\_var\_inicial\_vv}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-11-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grafico\_var\_inicial\_vv }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_var, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =}\NormalTok{ trim, }\AttributeTok{y =}\NormalTok{ txj)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =}\NormalTok{ cor\_linha) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ano"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Taxa de Juros"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Taxa de Juros"}\NormalTok{)}
+
+\NormalTok{grafico\_var\_inicial\_vv}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-12-1.pdf}
+Teste de Dickey-Fuller sobre vendas de carros e apos sobre taxa de juros
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{adf.test}\NormalTok{(dados\_var}\SpecialCharTok{$}\NormalTok{vv)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Augmented Dickey-Fuller Test
+## 
+## data:  dados_var$vv
+## Dickey-Fuller = -3.7548, Lag order = 5, p-value = 0.02323
+## alternative hypothesis: stationary
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{adf.test}\NormalTok{(dados\_var}\SpecialCharTok{$}\NormalTok{txj)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Augmented Dickey-Fuller Test
+## 
+## data:  dados_var$txj
+## Dickey-Fuller = -3.032, Lag order = 5, p-value = 0.1467
+## alternative hypothesis: stationary
+\end{verbatim}
+
+Montando um modelo VAR:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo\_var }\OtherTok{\textless{}{-}} \FunctionTok{VAR}\NormalTok{(dados\_var[,}\FunctionTok{c}\NormalTok{(}\StringTok{"txj"}\NormalTok{,}\StringTok{\textquotesingle{}vv\textquotesingle{}}\NormalTok{)], }\AttributeTok{p =} \DecValTok{1}\NormalTok{)}
+\FunctionTok{summary}\NormalTok{(modelo\_var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## VAR Estimation Results:
+## ========================= 
+## Endogenous variables: txj, vv 
+## Deterministic variables: const 
+## Sample size: 143 
+## Log Likelihood: -1526.109 
+## Roots of the characteristic polynomial:
+## 0.9594 0.499
+## Call:
+## VAR(y = dados_var[, c("txj", "vv")], p = 1)
+## 
+## 
+## Estimation results for equation txj: 
+## ==================================== 
+## txj = txj.l1 + vv.l1 + const 
+## 
+##          Estimate Std. Error t value Pr(>|t|)    
+## txj.l1  7.095e-01  4.964e-02  14.293  < 2e-16 ***
+## vv.l1  -2.294e-06  4.792e-07  -4.788 4.23e-06 ***
+## const   6.425e-01  1.140e-01   5.635 9.29e-08 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## 
+## Residual standard error: 0.1634 on 140 degrees of freedom
+## Multiple R-Squared: 0.8297,  Adjusted R-squared: 0.8273 
+## F-statistic: 341.1 on 2 and 140 DF,  p-value: < 2.2e-16 
+## 
+## 
+## Estimation results for equation vv: 
+## =================================== 
+## vv = txj.l1 + vv.l1 + const 
+## 
+##          Estimate Std. Error t value Pr(>|t|)    
+## txj.l1 -2.293e+04  5.023e+03  -4.565 1.09e-05 ***
+## vv.l1   7.489e-01  4.849e-02  15.443  < 2e-16 ***
+## const   6.095e+04  1.154e+04   5.283 4.76e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## 
+## Residual standard error: 16540 on 140 degrees of freedom
+## Multiple R-Squared: 0.8437,  Adjusted R-squared: 0.8415 
+## F-statistic: 377.8 on 2 and 140 DF,  p-value: < 2.2e-16 
+## 
+## 
+## 
+## Covariance matrix of residuals:
+##           txj        vv
+## txj   0.02671 8.073e+02
+## vv  807.28055 2.735e+08
+## 
+## Correlation matrix of residuals:
+##        txj     vv
+## txj 1.0000 0.2987
+## vv  0.2987 1.0000
+\end{verbatim}
+
+Causalidade de Granger
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grangertest}\NormalTok{(txj }\SpecialCharTok{\textasciitilde{}}\NormalTok{ vv, }\AttributeTok{data =}\NormalTok{ dados\_var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Granger causality test
+## 
+## Model 1: txj ~ Lags(txj, 1:1) + Lags(vv, 1:1)
+## Model 2: txj ~ Lags(txj, 1:1)
+##   Res.Df Df      F    Pr(>F)    
+## 1    140                        
+## 2    141 -1 22.926 4.232e-06 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(}\StringTok{\textquotesingle{}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}{-}\textquotesingle{}}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] "-------------"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{grangertest}\NormalTok{(vv }\SpecialCharTok{\textasciitilde{}}\NormalTok{ txj, }\AttributeTok{data =}\NormalTok{ dados\_var)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Granger causality test
+## 
+## Model 1: vv ~ Lags(vv, 1:1) + Lags(txj, 1:1)
+## Model 2: vv ~ Lags(vv, 1:1)
+##   Res.Df Df      F    Pr(>F)    
+## 1    140                        
+## 2    141 -1 20.836 1.085e-05 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+\end{verbatim}
+
+Plotando graficos de IRF
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{irf\_txj }\OtherTok{\textless{}{-}} \FunctionTok{irf}\NormalTok{(modelo\_var,}\AttributeTok{impulse =} \StringTok{"txj"}\NormalTok{, }\AttributeTok{response=}\FunctionTok{c}\NormalTok{(}\StringTok{"txj"}\NormalTok{,}\StringTok{"vv"}\NormalTok{), }\AttributeTok{n.ahead =} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{dados\_irf\_txj }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{txj =}\NormalTok{ irf\_txj}\SpecialCharTok{$}\NormalTok{irf}\SpecialCharTok{$}\NormalTok{txj[, }\StringTok{\textquotesingle{}txj\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{vv =}\NormalTok{ irf\_txj}\SpecialCharTok{$}\NormalTok{irf}\SpecialCharTok{$}\NormalTok{txj[, }\StringTok{\textquotesingle{}vv\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{lower\_txj =}\NormalTok{ irf\_txj}\SpecialCharTok{$}\NormalTok{Lower}\SpecialCharTok{$}\NormalTok{txj[, }\StringTok{\textquotesingle{}txj\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{upper\_txj =}\NormalTok{ irf\_txj}\SpecialCharTok{$}\NormalTok{Upper}\SpecialCharTok{$}\NormalTok{txj[, }\StringTok{\textquotesingle{}txj\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{lower\_vv =}\NormalTok{ irf\_txj}\SpecialCharTok{$}\NormalTok{Lower}\SpecialCharTok{$}\NormalTok{txj[, }\StringTok{\textquotesingle{}vv\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{upper\_vv =}\NormalTok{ irf\_txj}\SpecialCharTok{$}\NormalTok{Upper}\SpecialCharTok{$}\NormalTok{txj[, }\StringTok{\textquotesingle{}vv\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+
+\NormalTok{grafico\_irf\_txj\_txj }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_irf\_txj, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{seq\_along}\NormalTok{(txj))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ txj, }\AttributeTok{color =} \StringTok{"Resposta ao Impulso"}\NormalTok{), }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ lower\_txj, }\AttributeTok{color =} \StringTok{"Limite Inferior"}\NormalTok{), }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ upper\_txj, }\AttributeTok{color =} \StringTok{"Limite Superior"}\NormalTok{), }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Impulse Response"} \OtherTok{=}\NormalTok{ cor\_linha, }\StringTok{"Lower Bound"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Upper Bound"} \OtherTok{=} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Lag"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Taxa Juros"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Impulse Response Function da taxa de juros na taixa de juros"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+
+\NormalTok{grafico\_irf\_txj\_vv }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_irf\_txj, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{seq\_along}\NormalTok{(txj))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ vv, }\AttributeTok{color =} \StringTok{"Resposta ao Impulso"}\NormalTok{), }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ lower\_vv, }\AttributeTok{color =} \StringTok{"Limite Inferior"}\NormalTok{), }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ upper\_vv, }\AttributeTok{color =} \StringTok{"Limite Superior"}\NormalTok{), }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Impulse Response"} \OtherTok{=}\NormalTok{ cor\_linha, }\StringTok{"Lower Bound"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Upper Bound"} \OtherTok{=} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Lag"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Venda de Carros"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Impulse Response Function da taixa de juros na venda de carros"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\FunctionTok{print}\NormalTok{(grafico\_irf\_txj\_txj)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-17-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{print}\NormalTok{(grafico\_irf\_txj\_vv)}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-18-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{irf\_vv }\OtherTok{\textless{}{-}} \FunctionTok{irf}\NormalTok{(modelo\_var,}\AttributeTok{impulse =} \StringTok{"vv"}\NormalTok{, }\AttributeTok{response=}\FunctionTok{c}\NormalTok{(}\StringTok{"txj"}\NormalTok{,}\StringTok{"vv"}\NormalTok{), }\AttributeTok{n.ahead =} \DecValTok{10}\NormalTok{)}
+
+\NormalTok{dados\_irf\_vv }\OtherTok{\textless{}{-}} \FunctionTok{data.frame}\NormalTok{(}
+  \AttributeTok{txj =}\NormalTok{ irf\_vv}\SpecialCharTok{$}\NormalTok{irf}\SpecialCharTok{$}\NormalTok{vv[, }\StringTok{\textquotesingle{}txj\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{vv =}\NormalTok{ irf\_vv}\SpecialCharTok{$}\NormalTok{irf}\SpecialCharTok{$}\NormalTok{vv[, }\StringTok{\textquotesingle{}vv\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{lower\_txj =}\NormalTok{ irf\_vv}\SpecialCharTok{$}\NormalTok{Lower}\SpecialCharTok{$}\NormalTok{vv[, }\StringTok{\textquotesingle{}txj\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{upper\_txj =}\NormalTok{ irf\_vv}\SpecialCharTok{$}\NormalTok{Upper}\SpecialCharTok{$}\NormalTok{vv[, }\StringTok{\textquotesingle{}txj\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{lower\_vv =}\NormalTok{ irf\_vv}\SpecialCharTok{$}\NormalTok{Lower}\SpecialCharTok{$}\NormalTok{vv[, }\StringTok{\textquotesingle{}vv\textquotesingle{}}\NormalTok{],}
+  \AttributeTok{upper\_vv =}\NormalTok{ irf\_vv}\SpecialCharTok{$}\NormalTok{Upper}\SpecialCharTok{$}\NormalTok{vv[, }\StringTok{\textquotesingle{}vv\textquotesingle{}}\NormalTok{]}
+\NormalTok{)}
+
+\NormalTok{grafico\_irf\_vv\_txj }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_irf\_vv, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{seq\_along}\NormalTok{(txj))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ txj, }\AttributeTok{color =} \StringTok{"Resposta ao Impulso"}\NormalTok{), }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ lower\_txj, }\AttributeTok{color =} \StringTok{"Limite Inferior"}\NormalTok{), }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ upper\_txj, }\AttributeTok{color =} \StringTok{"Limite Superior"}\NormalTok{), }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Impulse Response"} \OtherTok{=}\NormalTok{ cor\_linha, }\StringTok{"Lower Bound"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Upper Bound"} \OtherTok{=} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Lag"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Taxa Juros"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Impulse Response Function da venda de carro na taxa de juros"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+
+
+\NormalTok{grafico\_irf\_vv\_txj }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(dados\_irf\_vv, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{seq\_along}\NormalTok{(txj))) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ vv, }\AttributeTok{color =} \StringTok{"Resposta ao Impulso"}\NormalTok{), }\AttributeTok{size =} \DecValTok{1}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ lower\_vv, }\AttributeTok{color =} \StringTok{"Limite Inferior"}\NormalTok{), }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\FunctionTok{aes}\NormalTok{(}\AttributeTok{y =}\NormalTok{ upper\_vv, }\AttributeTok{color =} \StringTok{"Limite Superior"}\NormalTok{), }\AttributeTok{linetype =} \StringTok{"dashed"}\NormalTok{, }\AttributeTok{color =} \StringTok{"red"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{scale\_color\_manual}\NormalTok{(}\AttributeTok{values =} \FunctionTok{c}\NormalTok{(}\StringTok{"Impulse Response"} \OtherTok{=}\NormalTok{ cor\_linha, }\StringTok{"Lower Bound"} \OtherTok{=} \StringTok{"red"}\NormalTok{, }\StringTok{"Upper Bound"} \OtherTok{=} \StringTok{"red"}\NormalTok{)) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Lag"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Venda de Carros"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Impulse Response Function da venda de carros na venda de carros"}\NormalTok{) }\SpecialCharTok{+}
+  \FunctionTok{theme\_minimal}\NormalTok{()}
+\NormalTok{grafico\_irf\_vv\_txj}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-19-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grafico\_irf\_vv\_txj}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-20-1.pdf} \#
+Cointegração e VEC
+
+Por questão de espaço, não irei realizar visivelmente aq o
+Dickey-Fuller, mas mostrou que não é estacionaria, então vamos
+diferenciar
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{dados\_dif\_cointegracao }\OtherTok{\textless{}{-}} \FunctionTok{cbind}\NormalTok{(}\FunctionTok{diff}\NormalTok{(dados\_cointegracao}\SpecialCharTok{$}\NormalTok{c), }\FunctionTok{diff}\NormalTok{(dados\_cointegracao}\SpecialCharTok{$}\NormalTok{y))}
+\FunctionTok{colnames}\NormalTok{(dados\_dif\_cointegracao) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{"c"}\NormalTok{,}\StringTok{"y"}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(dados\_dif\_cointegracao) }\OtherTok{\textless{}{-}}\NormalTok{ dados\_cointegracao}\SpecialCharTok{$}\NormalTok{trim[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+\NormalTok{df\_dados\_dif\_cointegracao }\OtherTok{\textless{}{-}} \FunctionTok{fortify}\NormalTok{(dados\_dif\_cointegracao)}
+\NormalTok{df\_dados\_dif\_cointegracao}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##            c    y
+## 1947.25   59 -120
+## 1947.5   -18   89
+## 1947.75  -28  -81
+## 1948      18   95
+## 1948.25   31  124
+## 1948.5   -12   77
+## 1948.75   14  -11
+## 1949     -16 -121
+## 1949.25   37  -22
+## 1949.5   -30  -13
+## 1949.75   14   -6
+## 1950      53  331
+## 1950.25   76  -45
+## 1950.5   172    1
+## 1950.75 -117   91
+## 1951      72  -60
+## 1951.25 -111  118
+## 1951.5    24   14
+## 1951.75    7  -15
+## 1952      -3  -27
+## 1952.25   67   30
+## 1952.5     7   92
+## 1952.75   88   14
+## 1953      43   45
+## 1953.25    5   60
+## 1953.5   -29  -36
+## 1953.75  -21   -3
+## 1954       3  -18
+## 1954.25   26  -49
+## 1954.5    55   62
+## 1954.75   67   79
+## 1955      57    9
+## 1955.25   64   89
+## 1955.5    29   72
+## 1955.75   63   76
+## 1956      -8   24
+## 1956.25  -15   20
+## 1956.5    -9    3
+## 1956.75   29   43
+## 1957      13  -15
+## 1957.25  -11   16
+## 1957.5    13    5
+## 1957.75   -8  -35
+## 1958     -72  -61
+## 1958.25   34   21
+## 1958.5    57  100
+## 1958.75   31   52
+## 1959      63   -9
+## 1959.25   51   75
+## 1959.5    27  -56
+## 1959.75   -7   24
+## 1960      -1   17
+## 1960.25   52   13
+## 1960.5   -48  -28
+## 1960.75  -13  -42
+## 1961     -12   34
+## 1961.25   56   69
+## 1961.5   -19   27
+## 1961.75   76   79
+## 1962      36   40
+## 1962.25   35   29
+## 1962.5    28   13
+## 1962.75   45    1
+## 1963      25   38
+## 1963.25   14   19
+## 1963.5    59   42
+## 1963.75   18   73
+## 1964      95  108
+## 1964.25   81  156
+## 1964.5    84   61
+## 1964.75   -2   51
+## 1965      85   25
+## 1965.25   54   83
+## 1965.5    86  164
+## 1965.75  135   93
+## 1966      57   25
+## 1966.25   11   23
+## 1966.5    43   54
+## 1966.75    1   47
+## 1967      33   98
+## 1967.25   69   52
+## 1967.5    17   40
+## 1967.75   21   32
+## 1968     120   83
+## 1968.25   75  103
+## 1968.5   106  -19
+## 1968.75   10   29
+## 1969      61  -10
+## 1969.25   29   73
+## 1969.5    20  140
+## 1969.75   38   40
+## 1970      29   17
+## 1970.25   11  113
+## 1970.5    38   69
+## 1970.75  -44  -48
+## 1971      90  101
+## 1971.25   38   91
+## 1971.5    17  -15
+## 1971.75   70    1
+## 1972      86   34
+## 1972.25  106   60
+## 1972.5    84  139
+## 1972.75  161  300
+## 1973      86   94
+## 1973.25  -32   48
+## 1973.5    16   46
+## 1973.75  -56   71
+## 1974    -105 -182
+## 1974.25   27 -108
+## 1974.5    26   26
+## 1974.75 -124  -52
+## 1975      43 -107
+## 1975.25  112  408
+## 1975.5    61 -168
+## 1975.75   58   60
+## 1976     151  118
+## 1976.25   41   26
+## 1976.5    71   36
+## 1976.75  104   50
+## 1977     100    0
+## 1977.25    0   81
+## 1977.5    63  143
+## 1977.75   96   45
+## 1978      19   93
+## 1978.25  148  131
+## 1978.5    18   33
+## 1978.75   60   86
+## 1979      10   40
+## 1979.25  -35  -70
+## 1979.5    33    1
+## 1979.75   18  -30
+## 1980     -35   26
+## 1980.25 -209 -205
+## 1980.5    71   65
+## 1980.75   57  110
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grafico\_var\_inicial\_vv }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df\_dados\_dif\_cointegracao, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{index}\NormalTok{(dados\_dif\_cointegracao), }\AttributeTok{y =}\NormalTok{ c)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =}\NormalTok{ cor\_linha) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ano"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Diff Consumo Norte Americano"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Consumo Norte Americano"}\NormalTok{)}
+
+\NormalTok{grafico\_var\_inicial\_vv}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-22-1.pdf}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{grafico\_var\_inicial\_vv }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(df\_dados\_dif\_cointegracao, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{index}\NormalTok{(dados\_dif\_cointegracao), }\AttributeTok{y =}\NormalTok{ y)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_line}\NormalTok{(}\AttributeTok{color =}\NormalTok{ cor\_linha) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ano"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Diff PIB Norte Americano"}\NormalTok{, }\AttributeTok{title =} \StringTok{"PIB Norte Americano"}\NormalTok{)}
+\NormalTok{grafico\_var\_inicial\_vv}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-23-1.pdf}
+Sumario/Resumo do modelo de cointegração:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{modelo\_cointegracao }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(y }\SpecialCharTok{\textasciitilde{}}\NormalTok{ c, }\AttributeTok{data =} \FunctionTok{as.data.frame}\NormalTok{(dados\_dif\_cointegracao))}
+\FunctionTok{summary}\NormalTok{(modelo\_cointegracao)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = y ~ c, data = as.data.frame(dados_dif_cointegracao))
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -223.14  -36.44    1.08   31.42  320.60 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  16.5551     7.1995   2.299    0.023 *  
+## c             0.6326     0.1134   5.579  1.3e-07 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 72.85 on 133 degrees of freedom
+## Multiple R-squared:  0.1897, Adjusted R-squared:  0.1836 
+## F-statistic: 31.13 on 1 and 133 DF,  p-value: 1.3e-07
+\end{verbatim}
+
+Analisando os residuos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{residuos }\OtherTok{\textless{}{-}} \FunctionTok{fortify}\NormalTok{(}\FunctionTok{as.data.frame}\NormalTok{(}\FunctionTok{residuals}\NormalTok{(modelo\_cointegracao)))}
+\FunctionTok{colnames}\NormalTok{(residuos) }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\StringTok{\textquotesingle{}res\textquotesingle{}}\NormalTok{)}
+\FunctionTok{rownames}\NormalTok{(residuos) }\OtherTok{\textless{}{-}}\NormalTok{ dados\_cointegracao}\SpecialCharTok{$}\NormalTok{trim[}\SpecialCharTok{{-}}\DecValTok{1}\NormalTok{]}
+
+\NormalTok{grafico\_resi }\OtherTok{\textless{}{-}} \FunctionTok{ggplot}\NormalTok{(residuos, }\FunctionTok{aes}\NormalTok{(}\AttributeTok{x =} \FunctionTok{rownames}\NormalTok{(residuos), }\AttributeTok{y =}\NormalTok{ res)) }\SpecialCharTok{+}
+  \FunctionTok{geom\_point}\NormalTok{(}\AttributeTok{color =}\NormalTok{ cor\_linha) }\SpecialCharTok{+}
+  \FunctionTok{labs}\NormalTok{(}\AttributeTok{x =} \StringTok{"Ano"}\NormalTok{, }\AttributeTok{y =} \StringTok{"Resíduo"}\NormalTok{, }\AttributeTok{title =} \StringTok{"Resíduos"}\NormalTok{)}
+\NormalTok{grafico\_resi}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{Trabalho_files/figure-latex/unnamed-chunk-25-1.pdf} ADF
+sobre os residuos
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{adf.test}\NormalTok{(residuos}\SpecialCharTok{$}\NormalTok{res)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning in adf.test(residuos$res): p-value smaller than printed p-value
+\end{verbatim}
+
+\begin{verbatim}
+## 
+##  Augmented Dickey-Fuller Test
+## 
+## data:  residuos$res
+## Dickey-Fuller = -5.7417, Lag order = 5, p-value = 0.01
+## alternative hypothesis: stationary
+\end{verbatim}
+
+Por fim, um modelo VEC:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{vec\_results }\OtherTok{\textless{}{-}} \FunctionTok{ca.jo}\NormalTok{(df\_dados\_dif\_cointegracao, }\AttributeTok{type =} \StringTok{"eigen"}\NormalTok{, }\AttributeTok{K=}\DecValTok{2}\NormalTok{)}
+\FunctionTok{summary}\NormalTok{(vec\_results)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## ###################### 
+## # Johansen-Procedure # 
+## ###################### 
+## 
+## Test type: maximal eigenvalue statistic (lambda max) , with linear trend 
+## 
+## Eigenvalues (lambda):
+## [1] 0.4249105 0.2331722
+## 
+## Values of teststatistic and critical values of test:
+## 
+##           test 10pct  5pct  1pct
+## r <= 1 | 35.31  6.50  8.18 11.65
+## r = 0  | 73.58 12.91 14.90 19.19
+## 
+## Eigenvectors, normalised to first column:
+## (These are the cointegration relations)
+## 
+##           c.l2       y.l2
+## c.l2  1.000000 1.00000000
+## y.l2 -1.140634 0.01272331
+## 
+## Weights W:
+## (This is the loading matrix)
+## 
+##           c.l2       y.l2
+## c.d -0.1053298 -0.6953155
+## y.d  1.0828513 -0.5656351
+\end{verbatim}
+
+\end{document}

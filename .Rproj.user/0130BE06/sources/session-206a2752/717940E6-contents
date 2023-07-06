@@ -30,9 +30,9 @@ dados_var$trim <- ymd(paste0(dados_var$trim, "01"))
 
 ## Codigo
 
-set.seed(748415)
-cor_linha = "#455949"
-folder = "Luisa"
+set.seed(99741)
+cor_linha = "#971999"
+folder = "Igor"
 fake_sarima_dados = "dadosSarima"
 fake_var_dados = "dadosVar"
 
@@ -76,7 +76,7 @@ modelo_sarima <- Arima(dados_sarima$RCAR6T, order = c(1, 0, 0), seasonal = list(
 objeto_summary <- capture.output(summary(modelo_sarima))
 
 # Remover a primeira linha e substituí-la por uma linha personalizada
-novo_summary <- c(paste0("Series: ", fake_sarima_dados ,"$RCAR6T"),objeto_summary[-1])
+  novo_summary <- c(paste0("Series: ", fake_sarima_dados ,"$RCAR6T"),objeto_summary[-1])
 
 # Imprimir o novo summary
 writeLines(novo_summary, paste0(folder, "/SAR_Summary.txt"))
@@ -126,6 +126,7 @@ writeLines(output, paste0(folder, "/VAR_txj_adf.txt"))
 modelo_var <- VAR(dados_var[,c("txj",'vv')], p = 1)
 summary_var <- capture.output(summary(modelo_var))
 summary_var[11] <- paste0("VAR(y = ",dados_var, "[, c(\"txj\", \"vv\")], p = 1)")
+writeLines(summary_var, paste0(folder, "/VAR_summary.txt"))
 # Causalidade de granger
 
 result <-  capture.output(grangertest(txj ~ vv, data = dados_var))

@@ -1,0 +1,32 @@
+"0","```r
+library(readxl)
+library(zoo)
+library(lubridate)
+library(ggplot2)
+library(tseries)
+library(magick)
+library(gridExtra)
+library(ggfortify)
+library(stats)
+library(forecast)
+library(vars)
+library(lmtest)
+library(stargazer)
+library(urca)
+
+
+dados_cointegracao <- read_excel(\"dados sobre cointegracao.xlsx\", sheet = 1)
+dados_cointegracao$trim <- as.yearqtr(dados_cointegracao$trim, format = \"%Yq%q\")
+dados_cointegracao
+
+dados_sarima <- read_excel(\"Dados para replicar SARIMA  Vendas de Automoveis USA.xlsx\", sheet = 1)
+colnames(dados_sarima) <- c(\"trim\",\"RCAR6T\")
+dados_sarima$trim <- as.Date(dados_sarima$trim)
+dados_sarima
+
+dados_var <- read_excel(\"Dados exemplo Modelo VAR sobre vendas veiculos e juros.xlsx\", sheet=1)
+dados_var$txj <- as.numeric(dados_var$txj)
+colnames(dados_var) <- c(\"trim\",\"vv\",\"txj\")
+dados_var$trim <- ymd(paste0(dados_var$trim, \"01\"))
+cor_linha <- \"#11CC22\"
+```"

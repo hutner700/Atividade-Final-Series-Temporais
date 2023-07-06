@@ -1,0 +1,30 @@
+
+###################### 
+# Johansen-Procedure # 
+###################### 
+
+Test type: maximal eigenvalue statistic (lambda max) , with linear trend 
+
+Eigenvalues (lambda):
+[1] 0.4249105 0.2331722
+
+Values of teststatistic and critical values of test:
+
+          test 10pct  5pct  1pct
+r <= 1 | 35.31  6.50  8.18 11.65
+r = 0  | 73.58 12.91 14.90 19.19
+
+Eigenvectors, normalised to first column:
+(These are the cointegration relations)
+
+          c.l2       y.l2
+c.l2  1.000000 1.00000000
+y.l2 -1.140634 0.01272331
+
+Weights W:
+(This is the loading matrix)
+
+          c.l2       y.l2
+c.d -0.1053298 -0.6953155
+y.d  1.0828513 -0.5656351
+
