@@ -1,0 +1,14 @@
+Series: dados_sarima$RCAR6T
+ARIMA(1,0,0)(1,0,0)[12] with non-zero mean 
+
+Coefficients:
+         ar1    sar1      mean
+      0.5438  0.5538  773.7203
+s.e.  0.0638  0.0626   24.2330
+
+sigma^2 = 5580:  log likelihood = -1112.95
+AIC=2233.9   AICc=2234.11   BIC=2246.97
+
+Training set error measures:
+                    ME     RMSE      MAE        MPE     MAPE      MASE        ACF1
+Training set 0.1506749 74.12011 57.38731 -0.9516228 7.434101 0.7504201 -0.06595613

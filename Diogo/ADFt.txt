@@ -1,0 +1,5 @@
+	Augmented Dickey-Fuller Test
+
+data: dados_sarima$RCAR6T
+Dickey-Fuller = -3.5165, Lag order = 5, p-value = 0.04263
+alternative hypothesis: stationary

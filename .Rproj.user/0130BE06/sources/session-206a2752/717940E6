@@ -1,0 +1,27 @@
+{
+    "id": "717940E6",
+    "path": "~/Codigos/R/Series Temporais/Atividade Final Series Temporais/main.R",
+    "project_path": "main.R",
+    "type": "r_source",
+    "hash": "0",
+    "contents": "",
+    "dirty": true,
+    "created": 1688645901265.0,
+    "source_on_save": false,
+    "relative_order": 1,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "216,0",
+        "scrollLine": "194",
+        "ignored_words": "Sarima,Codigo\n"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1688674549,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1688675216392,
+    "read_only": false,
+    "read_only_alternatives": []
+}

@@ -1,0 +1,20 @@
+Granger causality test
+
+Model 1: txj ~ Lags(txj, 1:1) + Lags(vv, 1:1)
+Model 2: txj ~ Lags(txj, 1:1)
+  Res.Df Df      F    Pr(>F)    
+1    140                        
+2    141 -1 22.926 4.232e-06 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+
+Granger causality test
+
+Model 1: vv ~ Lags(vv, 1:1) + Lags(txj, 1:1)
+Model 2: vv ~ Lags(vv, 1:1)
+  Res.Df Df      F    Pr(>F)    
+1    140                        
+2    141 -1 20.836 1.085e-05 ***
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
