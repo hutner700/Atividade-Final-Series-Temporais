@@ -214,3 +214,5 @@ grafico_var_inicial_vv <- ggplot(df_dados_dif_cointegracao, aes(x = index(dados_
 
 ggsave(paste0(folder,"/COI_pib.png"), plot = grafico_var_inicial_vv, width = 6, height = 4, dpi = 300)
 
+
+modelo_cointegracao <- lm(y ~ c, data = dados_cointegracao)

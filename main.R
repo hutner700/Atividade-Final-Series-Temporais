@@ -195,9 +195,24 @@ write.csv2(dados_irf_vv, file =paste0(folder,"/FRI_vv.csv"))
 write.csv2(dados_irf_txj, file =paste0(folder,"/FRI_txj.csv"))
 
 ## Questão Cointegração
+dados_dif_cointegracao <- cbind(diff(dados_cointegracao$c), diff(dados_cointegracao$y))
+colnames(dados_dif_cointegracao) <- c("c","y")
+rownames(dados_dif_cointegracao) <- dados_cointegracao$trim[-1]
+df_dados_dif_cointegracao <- fortify(dados_dif_cointegracao)
 
-dados_cointegracao
+grafico_var_inicial_vv <- ggplot(df_dados_dif_cointegracao, aes(x = index(dados_dif_cointegracao), y = c)) +
+  geom_line(color = cor_linha) +
+  labs(x = "Ano", y = "Diff Consumo Norte Americano", title = "Consumo Norte Americano")
+
+grafico_var_inicial_vv
+ggsave(paste0(folder,"/COI_consumo.png"), plot = grafico_var_inicial_vv, width = 6, height = 4, dpi = 300)
 
 
+grafico_var_inicial_vv <- ggplot(df_dados_dif_cointegracao, aes(x = index(dados_dif_cointegracao), y = y)) +
+  geom_line(color = cor_linha) +
+  labs(x = "Ano", y = "Diff PIB Norte Americano", title = "PIB Norte Americano")
+
+ggsave(paste0(folder,"/COI_pib.png"), plot = grafico_var_inicial_vv, width = 6, height = 4, dpi = 300)
 
 
+modelo_cointegracao <- lm(y ~ c, data = dados_cointegracao)
